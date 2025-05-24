@@ -18,7 +18,7 @@ export default function Clock() {
         <Text style={Styles.zone}>Timezone</Text>
       </View>
 
-      <View style={[Styles.header, {top: inset.top + 70}]}>
+      <View style={[Styles.header, {top: inset.top + 100}]}>
         <Text style={Styles.title}>Clock</Text>
       </View>
     </View>
@@ -28,7 +28,7 @@ export default function Clock() {
 const Styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    marginTop: -50,
+    marginTop: -80,
     paddingHorizontal: 20,
     justifyContent: 'center',
     backgroundColor: Colors['background'],
@@ -40,7 +40,6 @@ const Styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontWeight: '500',
     color: Colors['white'],
   },
   clockWrapper: {
