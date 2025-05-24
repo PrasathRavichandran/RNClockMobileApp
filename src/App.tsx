@@ -1,9 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import Customcanvas from './skia';
+import Colors from './constants/Colors';
 
 export default function App() {
   return (
     <View style={Styles.container}>
-      <Text>Hello world</Text>
+      <SafeAreaView style={Styles.center}>
+        <Customcanvas />
+      </SafeAreaView>
     </View>
   );
 }
@@ -11,7 +15,11 @@ export default function App() {
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: Colors['background'],
   },
+  center:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  }
 });
