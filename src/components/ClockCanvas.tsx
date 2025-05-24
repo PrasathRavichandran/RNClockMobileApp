@@ -12,7 +12,7 @@ import MinutesIndicator from './MinutesIndicator';
 
 const [width, height] = [300, 300];
 
-export default function Customcanvas() {
+export default function ClockCanvas() {
   const x = width / 2;
   const y = width / 2;
 

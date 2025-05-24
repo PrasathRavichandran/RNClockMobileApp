@@ -5,7 +5,9 @@ const Colors = {
     blue:"#748ef6",
     lightblue:"#77ddff",
     pink: "#ea74ab",
-    lightpink: "#c279fb"
+    lightpink: "#c279fb",
+    white: "#fff",
+    black: "#000"
 }
 
 export type ColorKey = keyof typeof Colors;
