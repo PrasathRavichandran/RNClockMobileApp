@@ -1,26 +1,24 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import Colors from '../constants/Colors';
 import ClockCanvas from '../components/ClockCanvas';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import CanvasProvider from '../context/Canvas';
+import TimeIndicator from '../components/TimeIndicator';
+import Timezone from '../components/Timezone';
+import TimezoneSwitcher from '../components/TimezoneSwitcher';
 
 export default function Clock() {
-  const inset = useSafeAreaInsets();
   return (
     <View style={Styles.wrapper}>
-      <View>
-        <Text style={Styles.time}>19:15</Text>
-        <Text style={Styles.date}>Fri 5, Jul</Text>
-      </View>
-      <View style={Styles.clockWrapper}>
-        <ClockCanvas />
-      </View>
-      <View>
-        <Text style={Styles.zone}>Timezone</Text>
-      </View>
+      <CanvasProvider>
+        <TimeIndicator />
+        <View style={Styles.clockWrapper}>
+          <ClockCanvas />
+        </View>
 
-      <View style={[Styles.header, {top: inset.top + 100}]}>
-        <Text style={Styles.title}>Clock</Text>
-      </View>
+        <Timezone />
+      </CanvasProvider>
+
+      <TimezoneSwitcher />
     </View>
   );
 }
@@ -28,38 +26,14 @@ export default function Clock() {
 const Styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    marginTop: -80,
-    paddingHorizontal: 20,
-    justifyContent: 'center',
     backgroundColor: Colors['background'],
     position: 'relative',
-  },
-  header: {
-    position: 'absolute',
-    left: 20,
-  },
-  title: {
-    fontSize: 28,
-    color: Colors['white'],
+    paddingHorizontal: 20,
+    paddingTop: 34,
   },
   clockWrapper: {
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 40,
-  },
-  time: {
-    fontSize: 64,
-    color: Colors['white'],
-    marginBottom: 8,
-  },
-  date: {
-    fontSize: 20,
-    color: Colors['stroke'],
-    marginLeft: 10,
-  },
-  zone: {
-    fontSize: 18,
-    color: Colors['white'],
-    marginLeft: 10,
   },
 });

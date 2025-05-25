@@ -7,7 +7,8 @@ const Colors = {
     pink: "#ea74ab",
     lightpink: "#c279fb",
     white: "#fff",
-    black: "#000"
+    black: "#000",
+    tabbar: "#242643"
 }
 
 export type ColorKey = keyof typeof Colors;
