@@ -1,11 +1,10 @@
-import {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import dayjs from 'dayjs';
-import {CanvasContext} from '../context/Canvas';
+import {useClock} from '../context/Canvas';
 import Colors from '../constants/Colors';
 
 export default function TimeIndicator() {
-  const {now} = useContext(CanvasContext);
+  const {now} = useClock();
 
   return (
     <>

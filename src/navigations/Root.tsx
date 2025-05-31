@@ -2,12 +2,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import Icon2 from 'react-native-vector-icons/Ionicons';
 
-import Clock from '../pages/Clock';
 import Colors from '../constants/Colors';
 import Alarm from '../pages/Alarm';
 import Timer from '../pages/Timer';
 import Stopwatch from '../pages/Stopwatch';
 import Settings from '../pages/Settings';
+import ClockStack from './ClockStack';
 
 type TabNavigationList = {
   Clock: undefined;
@@ -17,10 +17,9 @@ type TabNavigationList = {
   Settings: undefined;
 };
 
-// const Stack = createNativeStackNavigator<StackNavigationList>();
 const Tab = createBottomTabNavigator<TabNavigationList>();
 
-function RootStack() {
+function Root() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -49,7 +48,7 @@ function RootStack() {
       }}>
       <Tab.Screen
         name={'Clock'}
-        component={Clock}
+        component={ClockStack}
         options={{
           tabBarIcon: ({size, color}) => (
             <Icon name="clock" size={size} color={color} />
@@ -96,4 +95,4 @@ function RootStack() {
   );
 }
 
-export default RootStack;
+export default Root;

@@ -1,8 +1,8 @@
-import {useContext, useMemo} from 'react';
-import {CanvasContext} from '../context/Canvas';
+import {useMemo} from 'react';
+import {useClock} from '../context/Canvas';
 
 export default function useHand({x, y}: {x: number; y: number}) {
-  const {now} = useContext(CanvasContext);
+  const {now} = useClock();
 
   /**
    * Explanation:

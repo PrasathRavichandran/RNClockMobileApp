@@ -1,19 +1,22 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Colors from '../constants/Colors';
-import {useContext} from 'react';
-import {CanvasContext} from '../context/Canvas';
+import {useClock} from '../context/Canvas';
 import dayjs from 'dayjs';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 export default function Timezone() {
-  const {now} = useContext(CanvasContext);
+  const {now} = useClock();
+  const navigation = useNavigation();
   return (
     <View style={Styles.timezoneWrapper}>
       <Text style={Styles.zone}>Timezone</Text>
       <View style={Styles.countryDropdown}>
-        <Image
-          style={Styles.countryImg}
-          source={{uri: 'https://flagcdn.com/w80/be.png'}}
-        />
+        <TouchableOpacity onPress={() => navigation.navigate('CountryList')}>
+          <Image
+            style={Styles.countryImg}
+            source={{uri: 'https://flagcdn.com/w80/be.png'}}
+          />
+        </TouchableOpacity>
         <Text style={Styles.utc}>UTC{dayjs(now).format('Z')} (IST)</Text>
       </View>
     </View>

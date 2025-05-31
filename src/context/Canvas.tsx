@@ -1,6 +1,12 @@
-import {createContext, PropsWithChildren, useEffect, useState} from 'react';
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
-export const CanvasContext = createContext<{now?: Date}>({});
+const CanvasContext = createContext<{now?: Date}>({});
 
 export default function CanvasProvider({children}: PropsWithChildren) {
   const [now, setNow] = useState(() => new Date());
@@ -13,3 +19,9 @@ export default function CanvasProvider({children}: PropsWithChildren) {
     <CanvasContext.Provider value={{now}}>{children}</CanvasContext.Provider>
   );
 }
+
+export const useClock = () => {
+  const context = useContext(CanvasContext);
+  if (!context) throw new Error('useClock must be used within ClockProvider');
+  return context;
+};
