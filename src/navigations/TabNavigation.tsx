@@ -19,7 +19,7 @@ type TabNavigationList = {
 
 const Tab = createBottomTabNavigator<TabNavigationList>();
 
-function Root() {
+function TabNavigation() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -95,4 +95,4 @@ function Root() {
   );
 }
 
-export default Root;
+export default TabNavigation;
