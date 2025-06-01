@@ -7,7 +7,7 @@ import Alarm from '../pages/Alarm';
 import Timer from '../pages/Timer';
 import Stopwatch from '../pages/Stopwatch';
 import Settings from '../pages/Settings';
-import ClockStack from './ClockStack';
+import Clock from '../pages/Clock';
 
 type TabNavigationList = {
   Clock: undefined;
@@ -48,7 +48,7 @@ function Root() {
       }}>
       <Tab.Screen
         name={'Clock'}
-        component={ClockStack}
+        component={Clock}
         options={{
           tabBarIcon: ({size, color}) => (
             <Icon name="clock" size={size} color={color} />
