@@ -1,12 +1,36 @@
 import {DrawerContentComponentProps} from '@react-navigation/drawer';
 import {FC} from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {FlatList, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {View, SafeAreaView} from 'react-native';
 import Colors from '../constants/Colors';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Sidebar: FC<DrawerContentComponentProps> = () => {
+const Sidebar: FC<DrawerContentComponentProps> = ({navigation, state}) => {
+  const activeRoute = state.routeNames[state.index];
+  const links = [
+    {
+      icon: 'clock-outline',
+      title: 'Clock',
+    },
+    {
+      icon: 'alarm',
+      title: 'Alarm',
+    },
+    {
+      icon: 'timer-sand',
+      title: 'Timer',
+    },
+    {
+      icon: 'timer-outline',
+      title: 'Stopwatch',
+    },
+    {
+      icon: 'cog-outline',
+      title: 'Settings',
+    },
+  ];
+
   return (
     <View style={Styles.container}>
       <SafeAreaView>
@@ -15,10 +39,25 @@ const Sidebar: FC<DrawerContentComponentProps> = () => {
         </View>
       </SafeAreaView>
 
-      <TouchableOpacity style={Styles.link}>
-        <Icon name="clock-outline" size={36} color={'#fff'} />
-        <Text style={Styles.linkText}>Clock</Text>
-      </TouchableOpacity>
+      <FlatList
+        data={links}
+        contentContainerStyle={{paddingTop: 12, paddingHorizontal: 10}}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            style={[
+              Styles.link,
+              {
+                backgroundColor:
+                  item.title === activeRoute ? Colors['background'] : undefined,
+              },
+            ]}
+            onPress={() => navigation.navigate(item.title)}>
+            <Icon name={item.icon} size={28} color={'#fff'} />
+            <Text style={Styles.linkText}>{item.title}</Text>
+          </TouchableOpacity>
+        )}
+        keyExtractor={id => id.title}
+      />
     </View>
   );
 };
@@ -36,7 +75,7 @@ const Styles = StyleSheet.create({
     marginTop: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ffffff20',
-    paddingLeft: 18,
+    paddingLeft: 26,
   },
   heading: {
     fontSize: 24,
@@ -47,13 +86,13 @@ const Styles = StyleSheet.create({
   link: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 10,
-    paddingVertical: 10,
+    paddingLeft: 14,
+    paddingVertical: 12,
     gap: 16,
-    backgroundColor: '#5E81AC',
+    borderRadius: 100,
   },
   linkText: {
-    fontSize: 18,
+    fontSize: 16,
     color: Colors['white'],
     fontWeight: 'bold',
   },

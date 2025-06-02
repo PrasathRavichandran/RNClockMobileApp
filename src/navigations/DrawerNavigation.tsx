@@ -2,6 +2,10 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import Clock from '../pages/Clock';
 import Colors from '../constants/Colors';
 import Sidebar from '../components/Sidebar';
+import Alarm from '../pages/Alarm';
+import Timer from '../pages/Timer';
+import Stopwatch from '../pages/Stopwatch';
+import Settings from '../pages/Settings';
 
 type DrawerNavigationList = {
   Clock: undefined;
@@ -28,6 +32,10 @@ function DrawerNavigation() {
         },
       }}>
       <Drawer.Screen name={'Clock'} component={Clock} />
+      <Drawer.Screen name={'Alarm'} component={Alarm} />
+      <Drawer.Screen name={'Timer'} component={Timer} />
+      <Drawer.Screen name={'Stopwatch'} component={Stopwatch} />
+      <Drawer.Screen name={'Settings'} component={Settings} />
     </Drawer.Navigator>
   );
 }
